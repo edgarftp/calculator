@@ -102,34 +102,35 @@ var equal = null;
   })
 
   $(".operator").on("click", function (event) {
-      console.log(event);
-      
-    
-      if (equal == null && number1 != null) {
-      var ope = event.target.innerText;
-      operator = (event.currentTarget.value);
-      console.log(operator);
-        if (operator == "power"){
-          var n1 = parseInt(number1);
-          $("#second-number").text(number1);
-          equal = n1 *n1;
-          $("#result").text(equal);
-          $("#operator").text(ope); 
-        }
-        else if (operator == "negative") {
-          if (number2 == null) {
+  
+    if (equal == null && number1 != null) {
+      var ope = null;
+      if (event.currentTarget.value == "negative") {
+        if (number2 == null) {
             number1 = (parseInt(number1) * -1);
             $("#first-number").text(number1);
-          } else {
-            number2 = (parseInt(number2) * -1);
-            $("#second-number").text(number2);
-          }
-        }
-        else {
-          $("#operator").text(ope); 
+        } else {
+          number2 = (parseInt(number2) * -1);
+          $("#second-number").text(number2);
         }
       }
-  })
+      else {
+        ope = event.target.innerText;
+        operator = (event.currentTarget.value);
+        console.log(operator);
+          if (operator == "power"){
+            var n1 = parseInt(number1);
+            $("#second-number").text(number1);
+            equal = n1 *n1;
+            $("#result").text(equal);
+            $("#operator").text(ope); 
+          }
+          else {
+            $("#operator").text(ope); 
+          }
+      }
+    } 
+    })
 
   $(".equal").on("click", function() {
       var n1 = parseFloat(number1);
