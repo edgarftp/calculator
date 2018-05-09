@@ -93,7 +93,7 @@ var equal = null;
         number2 = secondNumber;
         $("#second-number").text(number2);
       }
-      else {
+      else if (equal == null) {
         firstNumber = (firstNumber + event.target.innerText);
         console.log (firstNumber);
         number1 = firstNumber;
@@ -134,7 +134,7 @@ var equal = null;
   $(".equal").on("click", function() {
       var n1 = parseFloat(number1);
       var n2 = parseFloat(number2);
-      
+    if (number1 != null && number2 != null) {
       if (operator == "plus") {
         console.log("hey +");
         equal = n1 + n2;
@@ -155,7 +155,7 @@ var equal = null;
         equal = n1 / n2;
         $("#result").text(equal);
       }
-   
+    }
   })
 
   $(".clear").on("click", function() {
