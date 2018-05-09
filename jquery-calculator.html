@@ -135,7 +135,6 @@ var equal = null;
       var n1 = parseFloat(number1);
       var n2 = parseFloat(number2);
       
-
       if (operator == "plus") {
         console.log("hey +");
         equal = n1 + n2;
@@ -156,11 +155,7 @@ var equal = null;
         equal = n1 / n2;
         $("#result").text(equal);
       }
-      else {
-        console.log("hey ^");
-        equal = n1 * n1;
-        $("#result").text(equal);
-      }
+   
   })
 
   $(".clear").on("click", function() {
