@@ -49,6 +49,7 @@
             <button id="button-power" class="btn btn-danger operator" value="power"><h1>^</h1></button>
             <button id="button-equal" class="btn btn-success equal" value="equals"><h1>=</h1></button>
             <br><br>
+            <button id="button-negative" class="btn btn-danger operator" value="negative"><h1>+/-</h1></button>
             <button id="button-clear" class="btn btn-dark clear" value="clear"><h1>clear</h1></button>
           </div>
         </div>
@@ -102,20 +103,31 @@ var equal = null;
 
   $(".operator").on("click", function (event) {
       console.log(event);
+      
     
       if (equal == null && number1 != null) {
       var ope = event.target.innerText;
       operator = (event.currentTarget.value);
       console.log(operator);
-      if (operator == "power"){
-        var n1 = parseInt(number1);
-        $("#second-number").text(number1);
-        equal = n1 *n1;
-        $("#result").text(equal);
-        
-      }
-
-      $("#operator").text(ope); 
+        if (operator == "power"){
+          var n1 = parseInt(number1);
+          $("#second-number").text(number1);
+          equal = n1 *n1;
+          $("#result").text(equal);
+          $("#operator").text(ope); 
+        }
+        else if (operator == "negative") {
+          if (number2 == null) {
+            number1 = (parseInt(number1) * -1);
+            $("#first-number").text(number1);
+          } else {
+            number2 = (parseInt(number2) * -1);
+            $("#second-number").text(number2);
+          }
+        }
+        else {
+          $("#operator").text(ope); 
+        }
       }
   })
 
